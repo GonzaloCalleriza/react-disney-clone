@@ -17,7 +17,7 @@ a {
   height: 80px;
   width: 100px;
   display: flex;
-  
+
 }
 
 .app {
@@ -33,7 +33,7 @@ a {
   margin-bottom: 50px;
 }
 
-.main-video img {
+.main-video Image {
   width: 100%;
 }
 
@@ -43,4 +43,26 @@ a {
   border-radius: 5%;
   margin: 5px;
   filter: drop-shadow(5px 5px 10px #000);
+}
+
+.video-image {
+  width: 100%;
+  position: absolute;
+  top: 0;
+}
+
+.info{
+  position: relative;
+  margin-top: 30%;
+  margin-left: 50px;
+  max-width: 50%;
+}
+
+.video-overlay {
+  position: absolute;
+
+}
+
+.info-footer {
+  height: 100vh;
 }
