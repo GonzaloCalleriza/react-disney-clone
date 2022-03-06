@@ -11,7 +11,7 @@ export const getStaticProps = async () => {
     } 
   })
   
-  const query = gql`
+  const videosQuery = gql`
     query {
       video {
         createdAt,
@@ -31,18 +31,36 @@ export const getStaticProps = async () => {
     }
   `
 
-  const data = await graphQLClient.request(query)
+  const accountQuery = gql`
+    query{
+      account(
+        where: {
+          id:
+        }
+      ){
+        username
+        avatar{
+          url
+        }
+      }
+    }
+  `
+
+  const data = await graphQLClient.request(videosQuery)
+  const accountData = await graphQLClient.request(accountQuery)
 
   const videos = data.videos
+  const account = accountData.account
 
   return {
     props:{
-      videos
+      videos,
+      account
     }
   }
 } 
 
-export default function Home({ videos }) {
+export default function Home({ videos, account }) {
 
   const filterVideos = (videos, genre) => {
     return videos.filter((video) => video.tags.include(genre))
@@ -58,7 +76,7 @@ export default function Home({ videos }) {
 
   return (
     <div className='app'>
-      <NavBar />
+      <NavBar account={account} />
       <div className='main-video'>
         <Image src={randomVideo(videos).thumbnail.url} alt={randomVideo(videos).title}/>
       </div>
