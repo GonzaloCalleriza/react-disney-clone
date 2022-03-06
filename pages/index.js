@@ -1,5 +1,6 @@
 import { gql, GraphQLClient } from 'graphql-request';
 import Image from 'next/image';
+import NavBar from '../components/Navbar';
 import Section from '../components/Section';
 
 export const getStaticProps = async () => {
@@ -57,6 +58,7 @@ export default function Home({ videos }) {
 
   return (
     <div className='app'>
+      <NavBar />
       <div className='main-video'>
         <Image src={randomVideo(videos).thumbnail.url} alt={randomVideo(videos).title}/>
       </div>
